@@ -15,6 +15,25 @@ bazel_dep(name = "swift-syntax", version = "510.0.0", repo_name = "SwiftSyntax")
 bazel_dep(name = "swift_argument_parser", version = "1.2.1", repo_name = "sourcekitten_com_github_apple_swift_argument_parser")
 bazel_dep(name = "yams", version = "5.0.6", repo_name = "sourcekitten_com_github_jpsim_yams")
 
+archive_override(
+    module_name = "swift_argument_parser",
+    strip_prefix = "swift-argument-parser-1.3.1",
+    urls = [
+        "https://github.com/apple/swift-argument-parser/archive/refs/tags/1.3.1.tar.gz",
+    ],
+    patches = [
+        "//bazel/patches:add_build_file.patch",
+        "//bazel/patches:module_dot_bazel.patch",
+    ],
+)
+archive_override(
+    module_name = "sourcekitten",
+    strip_prefix = "SourceKitten-01ad530c57d2d3dfde49a77cacb52f83fbadf3d8",
+    urls = [
+        "https://github.com/jpsim/SourceKitten/archive/01ad530c57d2d3dfde49a77cacb52f83fbadf3d8.zip",
+    ],
+)
+
 swiftlint_repos = use_extension("//bazel:repos.bzl", "swiftlint_repos_bzlmod")
 use_repo(
     swiftlint_repos,
