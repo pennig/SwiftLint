@@ -32,3 +32,14 @@ use_repo(apple_cc_configure, "local_config_apple_cc")
 # Dev Dependencies
 
 bazel_dep(name = "rules_xcodeproj", version = "2.6.1", dev_dependency = True)
+
+# Temporary overrides
+
+archive_override(
+    module_name = "swift-syntax",
+    integrity = "sha256-jPpMHrfJpV0qJWeJ5M7OjJ1MBdyJ5W3mbUfkV8RN9M4=",
+    strip_prefix = "swift-syntax-29887b2c7b6ec6945f0c30b1819e78ef27a1d9d3",
+    urls = [
+        "https://github.com/pennig/swift-syntax/archive/29887b2c7b6ec6945f0c30b1819e78ef27a1d9d3.zip",
+    ],
+)
